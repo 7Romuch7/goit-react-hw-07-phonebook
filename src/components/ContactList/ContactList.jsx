@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import phonebookActions from '../../redux/phonebook/phonebook-actions';
+import { phonebookOperations, phonebookSelectors } from '../../redux/phonebook';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ContactListItem from '../ContactListItem';
@@ -27,21 +27,14 @@ ContactList.propTypes = {
   onRemoveContact: PropTypes.func,
 };
 
-const getVisibleContacts  = ( allContacts, filter ) => {
-
-    return allContacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase().trim()),
-    );
-  };
-
-const mapStateToProps = ({contacts: {items, filter}}) => {
+const mapStateToProps = (state) => {
   return {
-    contacts: getVisibleContacts(items, filter)
+    contacts: phonebookSelectors.getVisibleContacts(state)
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  onRemoveContact: (id) => dispatch(phonebookActions.removeContact(id)),
+  onRemoveContact: (id) => dispatch(phonebookOperations.removeContact(id)),
 })
 
 

@@ -7,7 +7,7 @@ import {
   PERSIST,
   PURGE,
   REGISTER} from 'redux-persist';
-import phoneReducer from './phonebook/phonebook-reducer';
+import {phonebookReducer} from './phonebook';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -19,7 +19,7 @@ const middleware = [
 
 const store = configureStore({
   reducer: {
-    contacts:  phoneReducer,
+    contacts:  phonebookReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

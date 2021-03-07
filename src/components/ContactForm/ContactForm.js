@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from "react-redux";
-import phonebookActions from '../../redux/phonebook/phonebook-actions';
+import { phonebookOperations } from '../../redux/phonebook';
 import { CSSTransition } from 'react-transition-group';
 import Notification from '../Notification';
 import shortid from 'shortid';
@@ -93,7 +93,7 @@ class ContactForm extends Component {
 const mapStateToProps = state => ({ contacts: state.contacts});
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: (name, number) => { dispatch(phonebookActions.addContact(name, number)) },
+  onSubmit: (name, number) => { dispatch(phonebookOperations.addContact(name, number)) },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
