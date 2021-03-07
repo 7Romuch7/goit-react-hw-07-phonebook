@@ -33,4 +33,4 @@ const mapDispatchToProps = dispatch => ({
 fetchContact: () => dispatch(phonebookOperations.fetchContact())
 })
 
-export default connect( null, mapDispatchToProps )(App);
+export default connect( mapStateToProps, mapDispatchToProps )(App);
