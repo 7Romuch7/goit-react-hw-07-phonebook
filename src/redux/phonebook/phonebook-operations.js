@@ -11,7 +11,7 @@ import {
   fetchContactError,
 } from './phonebook-actions'
 
-axios.default.baseURL = 'http://localhost:4040';
+axios.defaults.baseURL = 'http://localhost:4040';
 
 const fetchContact = () => async dispatch => {
     dispatch(fetchContactRequest());
@@ -31,7 +31,6 @@ const addContact = ({ name, number }) => async dispatch => {
         const contact = { name, number }
         const { data } = await axios.post('/contacts', contact);
         dispatch(addContactSuccess(data));
-        console.log(data)
     } catch (error) {
         dispatch(addContactError(error.message));
     }

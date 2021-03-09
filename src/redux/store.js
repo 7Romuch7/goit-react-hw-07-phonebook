@@ -7,7 +7,7 @@ import {
   PERSIST,
   PURGE,
   REGISTER} from 'redux-persist';
-import {phonebookReducer} from './phonebook';
+import { phonebookReducer } from './phonebook';
 
 const middleware = [
   ...getDefaultMiddleware({

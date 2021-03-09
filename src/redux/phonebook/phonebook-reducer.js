@@ -15,8 +15,8 @@ import {
 
 const items = createReducer([], {
   [fetchContactSuccess]: (_, { payload }) => payload,
-  [addContactSuccess]: (state, {payload}) => [payload, ...state],
-  [removeContactSuccess]: (state, {payload}) => state.filter(({ id }) => id !== payload)
+  [addContactSuccess]: (state, { payload }) => [payload, ...state],
+  [removeContactSuccess]: (state, { payload }) => state.filter(({ id }) => id !== payload)
 })
 
 const filter = createReducer('', {
@@ -40,8 +40,6 @@ const error = createReducer(null, {
   [addContactError]: () => 'Произошла ошибка добавления контакта!',
   [removeContactError]: () => 'Произошла ошибка удаления контакта!',
 });
-
-
 
 export default combineReducers({
   items,
